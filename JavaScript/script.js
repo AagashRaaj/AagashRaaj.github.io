@@ -403,6 +403,7 @@ function sunny() {
   }
   remove = [];
   gx = 0;
+  rightinit = 0;
   // if (snowTimeout !== undefined || rainTimeout !== undefined) {
   // clearTimeout(snowTimeout);
   // clearTimeout(rainTimeout);
@@ -447,6 +448,7 @@ function snow() {
   }
   remove = [];
   gx = 0;
+  rightinit = 0;
   // if (sunnyTimeout !== undefined || rainTimeout !== undefined) {
   //   clearTimeout(sunnyTimeout);
   //   clearTimeout(rainTimeout);
@@ -484,6 +486,7 @@ function rain() {
   }
   remove = [];
   gx = 0;
+  rightinit = 0;
   // if (sunnyTimeout !== undefined || snowTimeout !== undefined) {
   //   clearTimeout(sunnyTimeout);
   //   clearTimeout(snowTimeout);
