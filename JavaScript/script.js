@@ -266,7 +266,6 @@ function button() {
   let b;
   b = mid.offsetWidth;
   a = mid.childNodes.length * 268;
-  // console.log(mid.childNodes.length, mid.childElementCount);
   if (a > b) {
     document.querySelector(".button").style.display = "flex";
   } else {
@@ -275,8 +274,9 @@ function button() {
 }
 let rightinit = 0;
 function right() {
-  rightinit += 250;
-  console.log(rightinit);
+  if (rightinit < mid.childElementCount * 210) {
+    rightinit += 250;
+  }
   mid.scroll({
     left: rightinit,
     behavior: "smooth",
@@ -286,7 +286,6 @@ function left() {
   if (rightinit > 0) {
     rightinit -= 250;
   }
-  console.log(rightinit);
   mid.scroll({
     left: rightinit,
     behavior: "smooth",
