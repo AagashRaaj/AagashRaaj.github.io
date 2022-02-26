@@ -329,7 +329,7 @@ function input(i) {
   hum.classList.add("hum");
   let i1 = document.createElement("div");
   hum.appendChild(i1);
-  i1.innerHTML = '<img src="assets/humidityIcon.svg"/>';
+  i1.innerHTML = '<img src="assets/humidityIcon.svg" alt="humidityIcon"/>';
   let i2 = document.createElement("div");
   hum.appendChild(i2);
   i2.innerHTML = text[i]["humidity"];
