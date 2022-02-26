@@ -1,4 +1,5 @@
 let text;
+("use strict");
 const url = {
   Nome: "assets/nome.svg",
   NewYork: "assets/newyork.svg",
@@ -272,13 +273,24 @@ function button() {
     document.querySelector(".button").style.display = "none";
   }
 }
-
+let rightinit = 0;
 function right() {
-  mid.scrollLeft += 270;
+  rightinit += 250;
+  console.log(rightinit);
+  mid.scroll({
+    left: rightinit,
+    behavior: "smooth",
+  });
 }
-
 function left() {
-  mid.scrollLeft -= 270;
+  if (rightinit > 0) {
+    rightinit -= 250;
+  }
+  console.log(rightinit);
+  mid.scroll({
+    left: rightinit,
+    behavior: "smooth",
+  });
 }
 
 function input(i) {
