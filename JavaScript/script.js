@@ -274,7 +274,7 @@ function button() {
 }
 let rightinit = 0;
 function right() {
-  if (rightinit < mid.childElementCount * 200) {
+  if (rightinit < mid.childElementCount * 205) {
     rightinit += 250;
   }
   mid.scroll({
