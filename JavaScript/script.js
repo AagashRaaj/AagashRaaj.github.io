@@ -484,9 +484,10 @@ function rain() {
       input(d[i]);
     }
   }
+  rightinit = 0;
   remove = [];
   gx = 0;
-  rightinit = 0;
+
   // if (sunnyTimeout !== undefined || snowTimeout !== undefined) {
   //   clearTimeout(sunnyTimeout);
   //   clearTimeout(snowTimeout);
