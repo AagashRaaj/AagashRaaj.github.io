@@ -327,6 +327,28 @@ function input(i) {
     dt.getMinutes().pad(2) +
     `&nbsp;
     ${ampm}`;
+  let set = () => {
+    let dt = datetime(offset[`${text[i].cityName}`]);
+    let hour = dt.getHours();
+    let ampm = "AM";
+    if (hour > 12) {
+      hour = hour - 12;
+      ampm = "PM";
+    } else if (hour == 0) {
+      hour = 12;
+    }
+    Number.prototype.pad = function (digit) {
+      for (var n = this.toString(); n.length < digit; n = 0 + n);
+      return n;
+    };
+    t.innerHTML =
+      hour.pad(2) +
+      `:` +
+      dt.getMinutes().pad(2) +
+      `&nbsp;
+    ${ampm}`;
+  };
+  setInterval(set, 60000);
   let d = document.createElement("div");
   particular.appendChild(d);
   d.innerHTML =
@@ -528,14 +550,40 @@ function glance(i) {
     for (var n = this.toString(); n.length < digit; n = 0 + n);
     return n;
   };
-
   name.innerHTML =
     text[i].cityName +
     `&nbsp;${hour.pad(2)}` +
     `:` +
     dt.getMinutes().pad(2) +
+    `:` +
+    dt.getSeconds().pad(2) +
     `&nbsp;
       ${ampm}`;
+  let set = () => {
+    let dt = datetime(offset[`${text[i].cityName}`]);
+    let hour = dt.getHours();
+    let ampm = "AM";
+    if (hour > 12) {
+      hour = hour - 12;
+      ampm = "PM";
+    } else if (hour == 0) {
+      hour = 12;
+    }
+    Number.prototype.pad = function (digit) {
+      for (var n = this.toString(); n.length < digit; n = 0 + n);
+      return n;
+    };
+    name.innerHTML =
+      text[i].cityName +
+      `&nbsp;${hour.pad(2)}` +
+      `:` +
+      dt.getMinutes().pad(2) +
+      `:` +
+      dt.getSeconds().pad(2) +
+      `&nbsp;
+      ${ampm}`;
+  };
+  setInterval(set, 1000);
   let drop = document.createElement("div");
   lower.appendChild(drop);
   drop.classList.add("drop");
