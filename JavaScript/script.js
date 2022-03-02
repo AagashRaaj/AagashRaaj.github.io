@@ -1,5 +1,5 @@
 let text;
-("use strict");
+`use strict`;
 const url = {
   Nome: "assets/nome.svg",
   NewYork: "assets/newyork.svg",
@@ -123,14 +123,15 @@ function selectdata() {
     document.getElementById(
       "cel"
     ).innerHTML = `<b>${text[i]["temperature"]}</b>`;
-    let t = text[i]["temperature"].slice(0, -2);
+    let t = text[i]["temperature"].match(/(\d+)/);
+    t = t[0];
     document.querySelector(".nowimg").src = criteria(t);
     document.querySelector(".firstimg").src = criteria(parseInt(t) + 1);
     document.querySelector(".secondimg").src = criteria(parseInt(t) + 2);
     document.querySelector(".thirdimg").src = criteria(parseInt(t) + 3);
     document.querySelector(".fourthimg").src = criteria(parseInt(t) + 4);
     document.querySelector(".fifthimg").src = criteria(parseInt(t) + 5);
-    document.querySelector(".nowt").innerHTML = t;
+    document.querySelector(".nowt").innerHTML = parseInt(t);
     document.querySelector(".firstt").innerHTML = parseInt(t) + 1;
     document.querySelector(".secondt").innerHTML = parseInt(t) + 2;
     document.querySelector(".thirdt").innerHTML = parseInt(t) + 3;
@@ -218,7 +219,9 @@ async function first() {
     glance(i);
   }
 }
-
+(() => {
+  setInterval(first, 3.6 * Math.pow(10, 5));
+})();
 let remove = [];
 function create() {
   var inputdata = document.getElementById("drop").value;
@@ -426,11 +429,6 @@ function sunny() {
   remove = [];
   gx = 0;
   rightinit = 0;
-  // if (snowTimeout !== undefined || rainTimeout !== undefined) {
-  // clearTimeout(snowTimeout);
-  // clearTimeout(rainTimeout);
-  // }
-  // sunnyTimeout = setTimeout(sunny, 60000);
 }
 
 function snow() {
@@ -509,12 +507,6 @@ function rain() {
   rightinit = 0;
   remove = [];
   gx = 0;
-
-  // if (sunnyTimeout !== undefined || snowTimeout !== undefined) {
-  //   clearTimeout(sunnyTimeout);
-  //   clearTimeout(snowTimeout);
-  // }
-  // rainTimeout = setTimeout(rain, 60000);
 }
 
 function glance(i) {
@@ -555,8 +547,8 @@ function glance(i) {
     `&nbsp;${hour.pad(2)}` +
     `:` +
     dt.getMinutes().pad(2) +
-    `:` +
-    dt.getSeconds().pad(2) +
+    // `:` +
+    // dt.getSeconds().pad(2) +
     `&nbsp;
       ${ampm}`;
   let set = () => {
@@ -578,12 +570,12 @@ function glance(i) {
       `&nbsp;${hour.pad(2)}` +
       `:` +
       dt.getMinutes().pad(2) +
-      `:` +
-      dt.getSeconds().pad(2) +
+      // `:` +
+      // dt.getSeconds().pad(2) +
       `&nbsp;
       ${ampm}`;
   };
-  setInterval(set, 1000);
+  setInterval(set, 60000);
   let drop = document.createElement("div");
   lower.appendChild(drop);
   drop.classList.add("drop");
